@@ -12,6 +12,10 @@ const Color primaryBackgroundColor = Colors.white;
 
 const Color primaryCardBackgroundColor = Colors.grey;
 
+// progress indicator color
+
+const Color primaryProgressBarColor = Colors.red;
+
 // the generic snack bar in the application
 
 const SnackBar snackBar = SnackBar(content: Text('This is a prototype, hence no purchasing options are available'));
