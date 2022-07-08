@@ -20,6 +20,7 @@ class _HomeState extends State<Home> {
   late YoutubeMetaData _youtubeMetaData;
   late YoutubePlayerController _controller;
   final bool _isPlayerReady = false;
+  bool isMute = true;
 
   Future<void> _launchInBrowser(Uri url) async {
     if(!await launchUrl(url,mode: LaunchMode.externalApplication)){
@@ -51,9 +52,10 @@ class _HomeState extends State<Home> {
                   context: context,
                   builder: (BuildContext context) => AlertDialog(
                     title: const Text('About the app and developer'),
-                    content: const Text(aboutDeveloperandApplication,maxLines: 100,),
+                    content: const Text(aboutDeveloperAndApplication,maxLines: 100,),
                     actions: [
                       TextButton(onPressed: () => Navigator.pop(context,'Cancel'), child: const Text('Cancel')),
+                      TextButton(onPressed: () {_launchInBrowser(Uri.parse(developerWebsite));}, child: const Icon(Icons.web_outlined)),
                       TextButton(onPressed: () => Navigator.pop(context,'OK'), child: const Text('OK'))
                     ],
                   )
@@ -76,7 +78,7 @@ class _HomeState extends State<Home> {
                 _controller = YoutubePlayerController(
                     initialVideoId: YoutubePlayer.convertUrlToId(_list[index].youtubeLink).toString(),
                     flags: const YoutubePlayerFlags(
-                      autoPlay: true,
+                      autoPlay: false,
                       mute: true,
                     )
                 );
@@ -109,20 +111,47 @@ class _HomeState extends State<Home> {
                       //go to video, go to the presented product 1
                       Row(
                         children: [
+
                           Expanded(child: ElevatedButton(
-                            child: const FaIcon(FontAwesomeIcons.youtube),
+                            child: Column(children: const  [ FaIcon(FontAwesomeIcons.amazon), Text("Left"),],),
+                            onPressed: () {
+                              // go to the youtube video
+                              _launchInBrowser(Uri.parse(_list[index].markerOne.linkToMarker));
+                            },
+                          )),
+                          Expanded(child: ElevatedButton(
+                            child: Column(children: const  [ FaIcon(FontAwesomeIcons.youtube), Text("Youtube"),],),
                             onPressed: () {
                               // go to the youtube video
                               _launchInBrowser(Uri.parse(_list[index].youtubeLink));
                             },
                           )),
                           Expanded(child: ElevatedButton(
-                            child: const FaIcon(FontAwesomeIcons.amazon),
+                            child: Column(children: const [ FaIcon(FontAwesomeIcons.amazon), Text("Right"),],),
                             onPressed: () {
                               // go to the youtube video
-                              _launchInBrowser(Uri.parse(_list[index].markerOne.linkToMarker));
+                              _launchInBrowser(Uri.parse(_list[index].markerTwo.linkToMarker));
                             },
                           )),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Expanded(child: ElevatedButton(
+                              onPressed: () {
+                                if (isMute) {
+                                  _controller.unMute();
+                                  isMute = false;
+                                } else {
+                                  _controller.mute();
+                                  isMute = true;
+                                }
+
+                              },
+                              child: const FaIcon(FontAwesomeIcons.volumeOff)
+                          ))
                         ],
                       )
                     ],

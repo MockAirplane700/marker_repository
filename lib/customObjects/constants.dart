@@ -22,14 +22,14 @@ const SnackBar snackBar = SnackBar(content: Text('This is a prototype, hence no 
 
 // the generic application about
 
-const String aboutDeveloperandApplication = '';
-
+const String aboutDeveloperAndApplication = 'I am a problem solver at heart. I see a problem, a solution is not too far away in my mind from forming. I take pride in my work and effort exerted, I love learning new things in many different diverse fields that interest me, this means that I usually think outside of the box and am a fast learner who likes to attack problems before they become troublesome';
+const String developerWebsite = 'https://crow-hexahedron-rmrf.squarespace.com/';
 // the artist/marketing guy information
 
 const String tiktok = 'https://www.tiktok.com/en/';
-const String aboutArtist = 's simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum';
-const String youtube = 'https://www.youtube.com';
-const String instagram = 'https://www.instagram.com/dailyart/?hl=en';
-const String twitter = 'https://twitter.com/hashtag/artists';
-const String networkImage = 'https://previews.123rf.com/images/natabu/natabu1710/natabu171000061/88337738-rainbow-markers.jpg';
+const String aboutArtist = 'This application uses content made by ACDC art attack on his youtube channel, "Dogs - Ducks - Drawings - FUN. I just Want to have fun!Hey Sub Scribbles and Viewers... I\'m Anthony or as you know me ADCArtAttack. I\'m here to both advance my skills and if I can help you in the best way I know, to improve our art skills together.... Always love suggestions so never stop them coming :).Drawing for me is a passion and I\'m extremely enthusiastic about it.\'';
+const String youtube = 'https://www.youtube.com/c/ADCArtAttack/';
+const String instagram = 'https://www.instagram.com/adcartattack/';
+const String twitter = 'https://twitter.com/ADCARTATTACK';
+const String networkImage = 'https://static-cdn.jtvnw.net/jtv_user_pictures/8d9cd460-39e6-4ca2-9b83-5e1b3cb36478-profile_image-70x70.png';
 const String facebook = 'https://www.facebook.com/Meta/';

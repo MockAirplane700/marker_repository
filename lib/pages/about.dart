@@ -32,7 +32,7 @@ class _AboutState extends State<About> {
         context: context,
         builder: (BuildContext context) => AlertDialog(
           title: const Text('About the app and developer'),
-          content: const Text(aboutDeveloperandApplication,maxLines: 100,),
+          content: const Text(aboutDeveloperAndApplication,maxLines: 100,),
           actions: [
             TextButton(onPressed: () => Navigator.pop(context,'Cancel'), child: const Text('Cancel')),
             TextButton(onPressed: () => Navigator.pop(context,'OK'), child: const Text('OK'))
@@ -96,6 +96,24 @@ class _AboutState extends State<About> {
                       },
                       icon: const FaIcon(FontAwesomeIcons.youtube)
                   )),
+                ],
+              ),
+              SizedBox(height: MediaQuery.of(context).size.height/50,),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  TextButton(
+                  onPressed: () {
+                    final Uri emailLaunchUri = Uri(
+                      scheme: 'mailto',
+                      path: 'hello@adcartattack.com',
+                      query: 'subject: FROM MOBILE APP'
+                    );
+                    _launchInBrowser(emailLaunchUri);
+                 },
+                  child: const Text("Email me", style: TextStyle(color: Colors.black),)
+              )
                 ],
               )
 
