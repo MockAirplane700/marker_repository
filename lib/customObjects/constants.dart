@@ -22,7 +22,7 @@ const SnackBar snackBar = SnackBar(content: Text('This is a prototype, hence no 
 
 // the generic application about
 
-const String aboutDeveloperAndApplication = 'I am a problem solver at heart. I see a problem, a solution is not too far away in my mind from forming. I take pride in my work and effort exerted, I love learning new things in many different diverse fields that interest me, this means that I usually think outside of the box and am a fast learner who likes to attack problems before they become troublesome';
+const String aboutDeveloperandApplication = 'This application was made by Mthandazo Edwin Siziba as a functioning prototype. If you wish to purchase the prototype or have a similar application made please contact me at sizibamthandazo@yahoo.com';
 const String developerWebsite = 'https://crow-hexahedron-rmrf.squarespace.com/';
 // the artist/marketing guy information
 

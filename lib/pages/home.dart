@@ -52,10 +52,10 @@ class _HomeState extends State<Home> {
                   context: context,
                   builder: (BuildContext context) => AlertDialog(
                     title: const Text('About the app and developer'),
-                    content: const Text(aboutDeveloperAndApplication,maxLines: 100,),
+                    content: const Text(aboutDeveloperandApplication,maxLines: 100,),
                     actions: [
                       TextButton(onPressed: () => Navigator.pop(context,'Cancel'), child: const Text('Cancel')),
-                      TextButton(onPressed: () {_launchInBrowser(Uri.parse(developerWebsite));}, child: const Icon(Icons.web_outlined)),
+                      TextButton(onPressed: () {_launchInBrowser(Uri.parse(developerWebsite));}, child: const Icon(Icons.language)),
                       TextButton(onPressed: () => Navigator.pop(context,'OK'), child: const Text('OK'))
                     ],
                   )
