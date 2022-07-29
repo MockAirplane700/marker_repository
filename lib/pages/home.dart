@@ -15,12 +15,13 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
   final List<HomeItem> _list = HomeListing.getListing();
   late PlayerState _playerState;
   late YoutubeMetaData _youtubeMetaData;
   late YoutubePlayerController _controller;
-  final bool _isPlayerReady = false;
-  bool isMute = true;
+  bool _isPlayerReady = false;
+  bool isMute = false;
 
   Future<void> _launchInBrowser(Uri url) async {
     if(!await launchUrl(url,mode: LaunchMode.externalApplication)){
@@ -38,6 +39,34 @@ class _HomeState extends State<Home> {
   }
 
   // add init and dispose
+  @override
+  void initState() {
+    // we set the state of the youtube player
+    super.initState();
+    // _controller = YoutubePlayerController(
+    //     initialVideoId:  YoutubePlayer.convertUrlToId(_list.first.youtubeLink).toString(),
+    //   flags: YoutubePlayerFlags(
+    //     mute: isMute,
+    //     autoPlay: false,
+    //     enableCaption: true
+    //   )
+    // )..addListener(listener);
+    _youtubeMetaData = const YoutubeMetaData();
+    _playerState = PlayerState.unknown;
+  }//end init
+
+  @override
+  void deactivate() {
+    // Pauses video while navigating to the next page
+    _controller.pause();
+    super.deactivate();
+  }
+  //
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
 
   @override
@@ -69,7 +98,7 @@ class _HomeState extends State<Home> {
       body: Center(
         child: ListView.builder(
             itemBuilder: (context, index) {
-
+              bool individualMute = true;
               if (_list.isEmpty){
                 //the list is empty
                 return Center(child: Column(mainAxisAlignment: MainAxisAlignment.center, children:const [CircularProgressIndicator(),Text('Please wait repo is loading') ],),);
@@ -77,11 +106,11 @@ class _HomeState extends State<Home> {
                 //the list is populated
                 _controller = YoutubePlayerController(
                     initialVideoId: YoutubePlayer.convertUrlToId(_list[index].youtubeLink).toString(),
-                    flags: const YoutubePlayerFlags(
+                    flags: YoutubePlayerFlags(
                       autoPlay: false,
-                      mute: true,
+                      mute: isMute,
                     )
-                );
+                )..addListener(listener);
 
                 return Center(child: Card(
                   color: primaryCardBackgroundColor,
@@ -101,8 +130,11 @@ class _HomeState extends State<Home> {
                               handleColor: primaryProgressBarColor
                             ),
                             onReady: () {
-                                _controller.addListener(listener);
+                              _isPlayerReady = true;
+                              //load the video of the relevant index
+                              // _controller.load(YoutubePlayer.convertUrlToId(_list[index].youtubeLink).toString());
                             },
+
                           ),
                           builder: (context, player) {
                             return player;
@@ -135,25 +167,38 @@ class _HomeState extends State<Home> {
                           )),
                         ],
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Expanded(child: ElevatedButton(
-                              onPressed: () {
-                                if (isMute) {
-                                  _controller.unMute();
-                                  isMute = false;
-                                } else {
-                                  _controller.mute();
-                                  isMute = true;
-                                }
-
-                              },
-                              child: const FaIcon(FontAwesomeIcons.volumeOff)
-                          ))
-                        ],
-                      )
+                      // Row(
+                      //   mainAxisAlignment: MainAxisAlignment.center,
+                      //   crossAxisAlignment: CrossAxisAlignment.center,
+                      //   children: [
+                      //     Expanded(child: ElevatedButton(
+                      //         onPressed: () {
+                      //
+                      //           if (isMute) {
+                      //             _controller.unMute();
+                      //             setState(() {
+                      //               isMute = false;
+                      //               individualMute  =false;
+                      //             });
+                      //             ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                      //                 content: Text('Volume has been un-muted')
+                      //             ));
+                      //           } else {
+                      //             _controller.mute();
+                      //             setState(() {
+                      //               individualMute = true;
+                      //               isMute = true;
+                      //             });
+                      //             ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                      //                 content: Text('Volume has been muted')
+                      //             ));
+                      //           }
+                      //
+                      //         },
+                      //         child: const FaIcon(FontAwesomeIcons.volumeOff)
+                      //     ))
+                      //   ],
+                      // )
                     ],
                   ),
                 ),);
