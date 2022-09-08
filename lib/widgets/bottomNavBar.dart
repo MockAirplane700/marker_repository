@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:marker_repository/pages/about.dart';
 import 'package:marker_repository/pages/home.dart';
+import 'package:marker_repository/pages/sponsorships.dart';
 
 class BottomNavBar extends StatefulWidget {
   final int selectedIndex;
@@ -18,7 +19,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
     return BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'About')
+          BottomNavigationBarItem(icon: Icon(Icons.people), label: 'Sponsorships')
         ],
       currentIndex: selectedIndex,
       onTap: (int index) {
@@ -28,8 +29,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
             //home page
             Navigator.push(context, MaterialPageRoute(builder: (context)=> const Home()));
         }else{
-            //the about page
-            Navigator.push(context, MaterialPageRoute(builder: (context)=> const About())
+            //the sponsors page
+            Navigator.push(context, MaterialPageRoute(builder: (context)=> const Sponsorships())
             );
           }
       },
