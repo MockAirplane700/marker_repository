@@ -1,6 +1,6 @@
 // holds the youtube video embed and the markers to be looked at
 
-import 'package:marker_repository/customObjects/markers.dart';
+import 'package:marker_repository/customObjects/marker.dart';
 
 class HomeItem {
   final String youtubeLink;

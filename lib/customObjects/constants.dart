@@ -4,11 +4,19 @@ import 'package:flutter/material.dart';
 
 const Color primaryAppBarColor = Colors.red;
 
+// the color of the icon theme data
+
+const Color primaryIconThemeData = Colors.black;
+
 // the primary color of the app background
 
 const Color primaryBackgroundColor = Colors.white;
 
 // the primary color of card backgrounds
+
+// the color of text
+
+const Color textColor = Colors.black;
 
 const Color primaryCardBackgroundColor = Colors.grey;
 
@@ -22,7 +30,7 @@ const SnackBar snackBar = SnackBar(content: Text('This is a prototype, hence no 
 
 // the generic application about
 
-const String aboutDeveloperandApplication = 'This application was made by Mthandazo Edwin Siziba as a functioning prototype. If you wish to purchase the prototype or have a similar application made please contact me at sizibamthandazo@yahoo.com';
+const String aboutDeveloperAndApplication = 'This application was made by Mthandazo Edwin Siziba as a functioning prototype. If you wish to purchase the prototype or have a similar application made please contact me at sizibamthandazo@yahoo.com';
 const String developerWebsite = 'https://crow-hexahedron-rmrf.squarespace.com/';
 // the artist/marketing guy information
 
