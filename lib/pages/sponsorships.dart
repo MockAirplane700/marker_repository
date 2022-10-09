@@ -5,7 +5,6 @@ import 'package:marker_repository/logic/sponsorsLogic.dart';
 import 'package:marker_repository/pages/view_sponsor.dart';
 import 'package:marker_repository/widgets/bottomNavBar.dart';
 import 'package:marker_repository/widgets/custom_drawer.dart';
-import 'package:marker_repository/widgets/custom_search_delegate_markers.dart';
 import 'package:marker_repository/widgets/custom_search_delegate_sponsors.dart';
 
 class Sponsorships extends StatefulWidget {
